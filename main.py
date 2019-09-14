@@ -5,9 +5,8 @@ def main():
     file_path = search_number('755205')
     if 'Error' not in file_path:
         record, status = process(file_path)
-        print(record)
-        print('')
-        print(status)
-    
+        return record, status
+    else:
+        return 'Error', 'Not Found'
 main()
 

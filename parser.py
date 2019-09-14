@@ -17,8 +17,4 @@ def parser(file_path):
                 tds = [ i.replace(':','').replace('\xa0','').strip() for i in tds ]
                 if len(tds) == 2:
                     record[tds[0]] = tds[1]
-    return record
-
-file_path = '/Users/kamlesh/WorkSpace/ip/public/550582de1f354bdeb43201e0561b5080.html'
-aa = parser(file_path)
-print(aa)
+    return record, record.get('Status','N/A')

@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import deathbycaptcha
 import uuid, os 
 import time
+import hashlib
 
 def search_number(application_number):
     agent = requests.session()
@@ -52,6 +53,7 @@ def search_number(application_number):
     h.close()
     captcha = client.decode(captcha_path, 100)
     print('captcha {}'.format(captcha))
+
     # Remove Files
     os.remove(captcha_path)
     payload['ToolkitScriptManager1_HiddenField'] = tt
@@ -85,21 +87,17 @@ def search_number(application_number):
     if html.status_code == 200:
         soup = BeautifulSoup(html.content, 'lxml')
         error = soup.find('span',{'id':"errorText"})
+        success = soup.find('span',{'id':"lblappdetail"})
         if error:
             error = error.text.strip()
             return 'Not Found'
-        else:
-            file_name = 'public/' + uuid.uuid4().hex + '.html'
+        elif success and 'NOT FOR LEGAL USE' in success.text:
+            file_name = 'public/' + str(hashlib.md5(html.content).hexdigest()) + '.html'
             hh = open(file_name, 'wb')
             hh.write(html.content)
             hh.close()
-            return 'Success'
+            return file_name
+        else:
+            return 'Error'
     else:
         return 'Error'
-
-arr = ['755205', '563412', '563411', '563410', '563112', '553412', '564412']
-for number in arr:
-    time.sleep(10)
-    rr = search_number(number)
-    print(rr)
-    

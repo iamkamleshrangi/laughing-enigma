@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 
-def parser(file_path):
+def process(file_path):
     content = open(file_path, 'rb').read()
     soup = BeautifulSoup(content, 'lxml')
     table = soup.find('table',{'style':"font-size=larger; background-color:mintcream;"})

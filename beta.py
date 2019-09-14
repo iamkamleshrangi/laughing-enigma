@@ -1,8 +1,9 @@
 import requests 
 from bs4 import BeautifulSoup
 import deathbycaptcha
+import uuid, os 
 
-def search_number():
+def search_number(application_number):
     agent = requests.session()
     url = 'http://ipindiaonline.gov.in/eregister/Application_View.aspx'
     html = agent.get(url)
@@ -44,17 +45,18 @@ def search_number():
     captcha_url = 'http://ipindiaonline.gov.in/eregister/captcha.ashx'
     client = deathbycaptcha.SocketClient('cubictree', 'P@ssw0rd')
     img = agent.get(captcha_url)
-    h = open('captcha.jpeg','wb')
+    captcha_path = uuid.uuid4().hex + '.jpeg'
+    h = open(captcha_path, 'wb')
     h.write(img.content)
     h.close()
-    captcha = client.decode('captcha.jpeg', 100)
+    captcha = client.decode(captcha_path, 100)
     print('captcha {}'.format(captcha))
-
+    os.remove(captcha_path)
     payload['ToolkitScriptManager1_HiddenField'] = tt
     payload['__EVENTTARGET'] = ''
     payload['__EVENTARGUMENT'] = ''
     payload['btnView'] = 'View+'
-    payload['applNumber'] = '563412'
+    payload['applNumber'] = application_number
     payload['captcha1'] = captcha['text']
 
     url = 'http://ipindiaonline.gov.in/eregister/Application_View.aspx'
@@ -77,10 +79,24 @@ def search_number():
     load['__EVENTTARGET'] = 'SearchWMDatagrid$ctl03$lnkbtnappNumber1'
     load['__EVENTARGUMENT'] = ''
 
-    dddd = agent.post('http://ipindiaonline.gov.in/eregister/Application_View.aspx', data=load).content
+    html = agent.post('http://ipindiaonline.gov.in/eregister/Application_View.aspx', data=load)
+    if html.status_code == 200:
+        soup = BeautifulSoup(html.content, 'lxml')
+        error = soup.find('span',{'id':"errorText"})
+        if error:
+            error = error.text.strip()
+            return 'Not Found'
+        else:
+            file_name = uuid.uuid4().hex + '.html'
+            hh = open(file_name, 'wb')
+            hh.write(html.content)
+            hh.close()
+            return 'Success'
+    else:
+        return 'Error'
 
-    yy = open('xx.html','wb')
-    yy.write(dddd)
-    yy.close()
-
-search_number()
+arr = ['755205', '563412', '563411', '563410', '563112', '553412', '564412']
+for number in arr:
+    rr = search_number(number)
+    print(rr)
+    

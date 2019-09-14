@@ -1,0 +1,145 @@
+
+
+<html>
+
+<script>
+<!--    Begin
+    // quick browser tests
+    var ns4 = (document.layers) ? true : false;
+    var ie4 = (document.all && !document.getElementById) ? true : false;
+    var ie5 = (document.all && document.getElementById) ? true : false;
+    var ns6 = (!document.all && document.getElementById) ? true : false;
+
+    function show(sw, obj) {
+        // show/hide the divisions
+        if (sw && (ie4 || ie5)) document.all[obj].style.visibility = 'visible';
+        if (!sw && (ie4 || ie5)) document.all[obj].style.visibility = 'hidden';
+        if (sw && ns4) document.layers[obj].visibility = 'visible';
+        if (!sw && ns4) document.layers[obj].visibility = 'hidden';
+    }
+    // End -->
+
+</script>
+<script type="text/javascript">
+    function printMe() {
+        //var content = document.getElementById('pnlPopup.ClientID');
+
+        var content = document.getElementById('pnlPopup');
+
+        //open blank page and put the rendered HTML text inside 
+        w = window.open('about:blank');
+        w.document.open();
+        w.document.write("<html>" + content.innerHTML);
+        w.document.writeln("<script>window.print()</" + "script>");
+        w.document.writeln("</html>");
+        w.document.close();
+        var content = document.getElementById('btn').style.visibility = "visible";
+    }
+</script>
+
+
+
+<body>
+    <!-- Modal Popup -->
+
+    <form name="Form1" method="post" action="./Application_View.aspx" id="Form1">
+<input type="hidden" name="ToolkitScriptManager1_HiddenField" id="ToolkitScriptManager1_HiddenField" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+
+
+<script src="/eregister/ScriptResource.axd?d=_81uArcToSU6g_JmZAFak-tTB7zNvwpUpYIMOwJLYddVPe7WpALi9GtrJpd_7OWsxfRSmgsy4ZDDte0Lxv_voU77gDNeorETeuLBJuP-J7Xc9ZycoS7eKYBKxFtLM-qLVt50XWm7AFMiF6GumKhAqM6yM2etmheQfZGQV3K1VHYypajQNIQF7zdhktKoeYXW0&amp;t=ffffffff999c3159" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<script src="/eregister/Application_View.aspx?_TSM_HiddenField_=ToolkitScriptManager1_HiddenField&amp;_TSM_CombinedScripts_=%3b%3bAjaxControlToolkit%2c+Version%3d3.5.11119.20050%2c+Culture%3dneutral%2c+PublicKeyToken%3d28f01b0e84b6d53e%3aen-US%3a8e147239-dd05-47b0-8fb3-f743a139f982%3a865923e8%3a91bd373d%3a8e72a662%3a411fea1c%3aacd642d2%3a596d588c%3a77c58d20%3a14b56adc%3a269a19ae" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="B8CF52B9" />
+<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="Xhm/vgv2mpsE6QzHvBhCfSTGDutBm6MTOfJf+++rBTkEHnahcoq7Cd0xtNqNRMn0btubIN0HGN63DdgO3D3/O01Dr4Nsd+oD2lhltOmAH9qwZpN6ZiS8osgLjsXsCIpXveaT3tEtIkpY/4vfalswiIxt/D+Q9BJCb9DxhuNm4YmPXKn1bD5rlkyTpS+iFgFxCweuYUt6FTxm0qsZH1ltN30YZOH6wb4EFK1L2kMiiSobjO+cCs2zc6wnSze4J6jtbg3P49009v6V025NGS1jvg==" />
+
+        
+        
+        <div id="panelgetdetail">
+	
+            <span id="lblappdetail"><table border ="0" width="680px" align="Center" cellspacing="0" style="font-size=larger; "><tr valign="top"><td align="center"><font color="Red"><b>(NOT FOR LEGAL USE)</b></font></td></tr></table><table border ="0" width="680px" align="Center" cellspacing="0" style="font-size=larger; "><tr valign="top"><td align="Left" width="250px;"><font color="navy"><b>As on Date : </font><font color="red">14/09/2019</b></font></td><td align="Right">&nbsp;</td></tr><tr valign="top"><td align="Left"><font color="navy"><b>Status &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </b></font><font color="red"><b>Registered</b></font></td><td align="Right"><a target="_blank" href="showdoc.aspx?document_no=WFlaW1xdKCcqLSoqJyhYWVpbXF0="><b><font size="3">View TM Application</font></a></b></td></tr></table><table border ="1" width="680px" align="Center" cellspacing="0" style="font-size=larger; background-color:mintcream;"><tr valign="top"><td width="200px" bgcolor="lightsteelblue">TM Application No.</td><td width="480px">755205</td></tr><tr valign="top"><td bgcolor="lightsteelblue">Class </td><td>7</td></tr><tr valign="top"><td bgcolor="lightsteelblue">Date of Application</td><td>08/04/1997</td></tr><tr valign="top"><td bgcolor="lightsteelblue">Appropriate Office</td><td>DELHI</td></tr><tr valign="top"><td bgcolor="lightsteelblue">State</td><td>CHANDIGARH</td></tr><tr valign="top"><td bgcolor="lightsteelblue">Country</td><td>India</td></tr><tr valign="top"><td bgcolor="lightsteelblue">Filing Mode </td><td>Branch Office</td></tr><tr valign="top"><td bgcolor="lightsteelblue">TM Applied For</td><td>PLT (DEVICE)</td></tr><tr valign="top"><td bgcolor="lightsteelblue">TM Category </td><td>TRADE MARK</td></tr><tr valign="top"><td bgcolor="lightsteelblue">Trade Mark Type</td><td>DEVICE</td></tr><tr valign="top"><td bgcolor="lightsteelblue">User Detail </td><td>Proposed to be used</td></tr><tr valign="top"><td bgcolor="lightsteelblue">Certificate Detail</td><td>Certificate No.&nbsp;455713&nbsp;&nbsp;&nbsp; Dated : 28/10/2005</td></tr><tr valign="top"><td bgcolor="lightsteelblue">Valid upto/ Renewed upto</td><td>08/04/2027</td></tr><tr valign="top"><td bgcolor="lightsteelblue">Proprietor name</td><td>(1) PLT INDUSTRIES PVT LTD.<br>Trading As : PLT INDUSTRIES PVT LTD.<br>Body Incorporate</td></tr><tr valign="top"><td bgcolor="lightsteelblue">Proprietor Address </td><td>24, Engineers Enclave, Pitampura, Delhi110034</td></tr><tr valign="top"><td bgcolor="lightsteelblue">Email Id </td><td></td></tr><tr valign="top"><td bgcolor="lightsteelblue">Agent name</td><td>HEMANT SINGH,[234]</td></tr><tr valign="top"><td bgcolor="lightsteelblue">Agent Address </td><td>C - 27, GREATER KAILASH ENCLAVE PART - I. NEW DELHI - 110 048 .</td></tr><tr valign="top"><td bgcolor="lightsteelblue"> Goods & Service Details</td><td>[CLASS : 7] <br>BALL BEARINGS, TAPER BOLLER AND BEARINGS AND NEEDL BEARINGS.</td></tr><tr valign="top"><td bgcolor="lightsteelblue">Conditions</td><td>REGISTRATION OF THIS TRADE MARK SHALL GIVE NO RIGHT TO THE EXCLUSIVE USE OF THE LETTER "G.</td></tr><tr valign="top"><td bgcolor="lightsteelblue">Publication Details </td><td>Published in Journal No. : 1328-1 &nbsp;&nbsp;&nbsp; Dated : 07/02/2005</td></tr><table align="center" border="1" cellspacing="0"><tr><td align="center"><font size="3" color="maroon">Trade Mark Image : (1) </font></td></tr><tr><td align="center"><img src = "imagedoc.aspx?ID=1&APPNUMBER=WFlaW1xdLiwsKScsWFlaW1xd" /></tr></table></span>
+            <div id="printedView">
+                 <table align="center" border="0"><br />
+                     <tr>
+                         <td align="center">
+                            <input type="submit" name="btnprint_detail" value="PRINT" onclick="show(false,&#39;printedView&#39;);print();show(true,&#39;printedView&#39;);" id="btnprint_detail" />
+                        </td>
+                       
+                     </tr>
+                 </table>
+                <table align="center" border="0"><br />
+                     
+                    <tr>
+                    
+                            
+                        <td align="Left">
+                            <input type="submit" name="btnpr" value="PR Details" id="btnpr" />
+                        </td>
+                        <td align="Right">
+                            <input type="submit" name="btnNotice" value="Correspondence &amp; Notices" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnNotice&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnNotice" />
+                        </td>
+                        <td align="Left">
+                            <input type="submit" name="btndocument" value="Uploaded Documents" id="btndocument" />
+                        </td>
+                         <td >
+                            <input type="submit" name="btnExit" value="EXIT" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnExit&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnExit" />
+                        </td>
+                        
+                    </tr>
+                </table>
+
+                <table align="center" border="0" style="width:725px;">
+                      <tr>
+                        <td align="left"><p align="justify"><h6><font color="Red">WARNING/DISCLAIMER</font> :  THE DATA OF TRADE MARKS REGISTRY IS UNDER THE PROCESS OF DIGITISATION, IF ANY DISCREPANCY IS OBSERVED IN THE DATA PLEASE CONTACT OR SUBMIT AT APPROPRIATE TRADE MARKS REGISTRY ALONGWITH SUPPORTING DOCUMENTS. THIS WILL HELP IN UPDATION OF ELECTRONIC RECORDS.</h6></p></td>
+                    </tr>
+                </table>            
+            </div>
+           
+        
+</div>
+
+        
+        
+        
+
+
+        
+
+
+        
+        <a id="lnkDummy" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;lnkDummy&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, true))"></a>
+        
+        <div id="pnlPopup" class="modalPopup" align="center" style="display: none">
+	
+           
+            <div class="body">
+                
+       
+               <br />
+                <center>
+                     <input type=button id="btn" onclick="printMe()" value="Print" style="font:10;color:maroon;font-weight:bold">
+                       <input type="submit" name="btnHide" value="Close" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnHide&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnHide" />
+                
+                    </center>
+            </div>
+
+        
+</div>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","CancelControlID":"btnHide","PopupControlID":"pnlPopup","dynamicServicePath":"/eregister/Application_View.aspx","id":"mpe"}, null, null, $get("lnkDummy"));
+});
+//]]>
+</script>
+</form>
+</body>
+</html>

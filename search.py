@@ -52,8 +52,6 @@ def search_number(application_number):
     h.write(img.content)
     h.close()
     captcha = client.decode(captcha_path, 100)
-    print('captcha {}'.format(captcha))
-
     # Remove Files
     os.remove(captcha_path)
     payload['ToolkitScriptManager1_HiddenField'] = tt
@@ -90,7 +88,7 @@ def search_number(application_number):
         success = soup.find('span',{'id':"lblappdetail"})
         if error:
             error = error.text.strip()
-            return 'Not Found'
+            return 'Error Not Found'
         elif success and 'NOT FOR LEGAL USE' in success.text:
             file_name = 'public/' + str(hashlib.md5(html.content).hexdigest()) + '.html'
             hh = open(file_name, 'wb')

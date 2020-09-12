@@ -1,10 +1,9 @@
 import PyPDF2
-
 from PIL import Image
 
 if __name__ == '__main__':
     input1 = PyPDF2.PdfFileReader(open("1.pdf",'rb'))
-    page0 = input1.getPage(2)
+    page0 = input1.getPage(5)
     xObject = page0['/Resources']['/XObject'].getObject()
 
     for obj in xObject:

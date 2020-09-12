@@ -18,3 +18,9 @@ def process(file_path):
                 if len(tds) == 2:
                     record[tds[0]] = tds[1]
     return record, record.get('Status','N/A')
+
+file_path = 'public/0d56b7095452c699ca41790055bc5264.html'
+record, status = process(file_path)
+print(status)
+print('')
+print(record)
